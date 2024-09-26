@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+
+      <section id="header_container" class="headerContainer">
+        <h1 class="gameHeader"><span class="textDecoration">XOX</span> GAME
+        </h1>
+      </section>
+      <section id="game_container" class="gameContainer">
+          <div id="game-board" class="gameBoard">
+          </div>
+        <div id="game-info_container" class="gameInfoContainer">
+          <div id="score_container" class="scoreContainer">
+            <div id="player-1_container" class="playerContainer">
+              <h2 id="player-1_name" class="playerName"></h2>
+              <h2 id="player-1_score" class="playerScore"></h2>
+            </div>
+            <div id="player-2_container" class="playerContainer">
+              <h2 id="player-2_name" class="playerName"></h2>
+              <h2 id="player-2_score" class="playerScore"></h2>
+            </div>
+          </div>
+          <div id="game-type_container" class="gameTypeContainer">
+            <div id="game-type-icon_container" class="gameTypeIconContainer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="gameTypeIcon" height="24">
+                <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"/>
+              </svg>
+            </div>
+            <h3 id="game-type-num" class="gameTypeText">            
+            </h3>
+          </div>
+        </div>
+      </section>
+      <section id="game-controls_container" class="gameControlsContainer">
+          <div id="difficulty_container" class="difficultyContainer">
+            <div id="normal-mode" class="difficultyButton active">Normal</div>
+            <div id="hard-mode" class="difficultyButton">Hard</div>
+          </div>
+          <div id="newgame-button" class="newGameButton">
+            New Game
+          </div>
+      </section>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
