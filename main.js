@@ -147,7 +147,7 @@ function turnProcessing(i, cell) {
       } else {
         isTurnProcessing = false;
       }
-    }, 2800);
+    }, 2500);
 
   } else {
     changePlayer();
