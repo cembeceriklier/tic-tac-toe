@@ -403,7 +403,6 @@ h1 {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  
 }
 
 .gameTypeContainer:hover .P2::before {
@@ -432,7 +431,6 @@ h1 {
   content: "2P";
   position: relative;
   transition: all 0.2s ease;
-  
 }
 
 /* GameControlsContainer */
@@ -492,36 +490,3 @@ h1 {
 .fade {
   opacity: 50%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
