@@ -1,14 +1,24 @@
-This is a xoxGame project
+# XOX Game (Tic-Tac-Toe)
 
-to install dependencies dont forget to run:
+## Proje Hakkında
+XOX Game, klasik bir iki oyunculu oyun olan Tic-Tac-Toe'yu (X ve O ile oynanan) içeren basit bir projedir. Oyun, oyuncuların sırayla 3x3'lük bir tahtada X veya O işaretlerini yerleştirerek kazanmayı amaçladığı eğlenceli bir deneyim sunar.
 
-npm i
+## Özellikler
+- İki oyunculu mod
+- Normal ve Hard zorluk seviyeleri
+- Basit ve kullanıcı dostu arayüz
+- Hızlı oyun döngüsü
 
-// TODO: 1P 2P değişirken img yetişemiyor. 
-// TODO-2: Player 1 ve player 2 yazısı ile skor yazısının arasını biraz daha aç. (tamam)
-// TODO-3: 1P 2P yazısının fontunu büyüt ya da kalınlaştır.
-// TODO-4: New Game butonu ekle
-// TODO-5: 3 Zorluk belirle ve hamlelere gereken zarları zorluklara göre ayarla.
-// TODO-6: 3 Zorluk derecesinin seçileceği bir arayüz ekle.
-// TODO-7: Animasyonları düzenle. 
-// TODO-8: Hücre oynanış animasyonu eklenebilir. Her tıkladığında...
+## Teknolojiler
+- HTML
+- CSS
+- JavaScript
+
+## Kurulum
+1. Bu repository yi klonlayın:
+
+    git clone https://github.com/cembeceriklier/xoxGame.git
+
+2. Bağımlılıkları yükleyin:
+
+    npm install
