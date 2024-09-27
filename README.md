@@ -15,10 +15,21 @@ XOX Game, klasik bir iki oyunculu oyun olan Tic-Tac-Toe'yu (X ve O ile oynanan) 
 - JavaScript
 
 ## Kurulum
-1. Bu repository yi klonlayın:
+1. Bu repository'yi klonlayın:
 
+    ```bash
     git clone https://github.com/cembeceriklier/xoxGame.git
+    cd xoxGame
+    ```
 
 2. Bağımlılıkları yükleyin:
 
+    ```bash
     npm install
+    ```
+
+3. Geliştirme sunucusunu başlatın:
+
+    ```bash
+    npm run dev
+    ```
