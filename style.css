@@ -45,54 +45,60 @@
   }
 }
 
+@keyframes fade {
+  0% {
+    opacity: .5;
+  }
+}
+
 /* Border */
 
 #game-board .block:nth-child(1) {
-  border-bottom: .5px solid orange;
-  border-right: .5px solid orange;
+  border-bottom: .5px solid white;
+  border-right: .5px solid white;
 }
 
 #game-board .block:nth-child(2) {
-  border-bottom: .5px solid orange;
-  border-right: .5px solid orange;
-  border-left: .5px solid orange;
+  border-bottom: .5px solid white;
+  border-right: .5px solid white;
+  border-left: .5px solid white;
 }
 
 #game-board .block:nth-child(3) {
-  border-bottom: .5px solid orange;
-  border-left: .5px solid orange;
+  border-bottom: .5px solid white;
+  border-left: .5px solid white;
 }
 
 #game-board .block:nth-child(4) {
-  border-bottom: .5px solid orange;
-  border-right: .5px solid orange;
-  border-top: .5px solid orange;
+  border-bottom: .5px solid white;
+  border-right: .5px solid white;
+  border-top: .5px solid white;
 }
 
 #game-board .block:nth-child(5) {
-  border: .5px solid orange
+  border: .5px solid white
 }
 
 #game-board .block:nth-child(6) {
-  border-bottom: .5px solid orange;
-  border-left: .5px solid orange;
-  border-top: .5px solid orange;
+  border-bottom: .5px solid white;
+  border-left: .5px solid white;
+  border-top: .5px solid white;
 }
 
 #game-board .block:nth-child(7) {
-  border-right: .5px solid orange;
-  border-top: .5px solid orange;
+  border-right: .5px solid white;
+  border-top: .5px solid white;
 }
 
 #game-board .block:nth-child(8) {
-  border-top: .5px solid orange;
-  border-right: .5px solid orange;
-  border-left: .5px solid orange;
+  border-top: .5px solid white;
+  border-right: .5px solid white;
+  border-left: .5px solid white;
 }
 
 #game-board .block:nth-child(9) {
-  border-top: .5px solid orange;
-  border-left: .5px solid orange;
+  border-top: .5px solid white;
+  border-left: .5px solid white;
 }
 
 :root {
@@ -141,30 +147,32 @@ h1 {
 
 /* Containers */
 .headerContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: orange;
-  height: 350px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
   width: 100%;
+  color: white;
 }
 
 .textDecoration {
+
   position: relative;
-  color: black;
+  color: white;
 }
 
 /* GameContainer */
 
 .gameContainer {
-  margin-top: 30%;
+  margin-top: 50px;
   align-items: center;
   box-sizing: border-box;
 }
 
 .gameBoardContainer {
   display: flex;
-  background-color: white;
+  background-color: black;
 }
 
 .gameBoard {
@@ -253,7 +261,7 @@ h1 {
   width: 100%;
   height: 30%;
   z-index: 10;
-  background-color: orange;
+  background-color: white;
 }
 
 .gameInfoContainer {
@@ -312,8 +320,7 @@ h1 {
 }
 
 .gameTypeIcon {
-  fill: orange
-  ;
+  fill: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -321,6 +328,7 @@ h1 {
   width: 20px;
   height: 20px;
   margin-bottom: 5px;
+  opacity: .5;
 }
 
 .hidden {
@@ -335,14 +343,14 @@ h1 {
 }
 
 .gameTypeContainer:hover .gameTypeIcon {
-  fill:white
+  opacity: 1
 }
 
 /* 1P */
 
 .gameTypeContainer:hover .P1::after {
   position: relative;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   transform: translateX(15px);
   text-align: center;
   opacity: 0;
@@ -353,10 +361,10 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   text-align: center;
   opacity: 100;
-  color: orange
+  color: white
 }
 
 .P1 {
@@ -366,7 +374,7 @@ h1 {
   justify-content: center;
   text-align: center;
   flex-direction: row;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .P1::before {
@@ -377,7 +385,7 @@ h1 {
   justify-content: center;
   text-align: center;
   opacity: 0;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 
 }
 
@@ -389,14 +397,14 @@ h1 {
   justify-content: center;
   text-align: center;
   text-align: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 /* 2P */
 
 .gameTypeContainer:hover .P2::after {
   position: relative;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   transform: translateX(15px);
   text-align: center;
   display: flex;
@@ -407,30 +415,30 @@ h1 {
 
 .gameTypeContainer:hover .P2::before {
   position: absolute;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   text-align: center;
   opacity: 100;
-  color: orange
+  color: white
 }
 
 .P2 {
   position: relative;
   display: flex;
   flex-direction: row;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .P2::before {
   content: "1P";
   position: absolute;
   opacity: 0;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .P2::after {
   content: "2P";
   position: relative;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 /* GameControlsContainer */
@@ -456,13 +464,13 @@ h1 {
 }
 
 .difficultyButton:hover:not(.active) {
-  color:orange;
+  color:white;
   transform: scale(1.05);
   transition: transform .1s ease;
 }
 
 .active {
-  color:orange;
+  color:white;
 }
 
 .newGameButton {
@@ -475,7 +483,7 @@ h1 {
 }
 
 .newGameButton:hover {
-  color:orange;
+  color:white;
   transform: scale(1.05);
   transition: transform .1s ease;
 }
