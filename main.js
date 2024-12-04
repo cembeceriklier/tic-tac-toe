@@ -1,5 +1,3 @@
-import './style.css'
-
 const normal = {
   finisherMove: 0,
   blockMove: 5,
@@ -17,10 +15,10 @@ const hard = {
 };
 
 const game = {
-    type: 'P1',
-    difficult: normal,
-    turn: 0,
-    dice: 0,
+  type: 'P1',
+  difficult: normal,
+  turn: 0,
+  dice: 0,
 }
 const moves = {
   finisherMove: 0,
@@ -31,7 +29,7 @@ const moves = {
   blindMove: 0,
 }
 
-let players = { 
+let players = {
   X: {
     name: 'X',
     key: 1,
@@ -48,13 +46,13 @@ let players = {
   }
 }
 
-let isSinglePlayerGame = true; 
-let currentPlayer = players.X;  
-let nextPlayer = players.O; 
+let isSinglePlayerGame = true;
+let currentPlayer = players.X;
+let nextPlayer = players.O;
 let isTurnProcessing = false; // Turn is processing or not
 
 // GAMEBOARD 
-let blockContainer = document.getElementById('game-board'); 
+let blockContainer = document.getElementById('game-board');
 let gameBoard = Array(9).fill(null);
 let winConditions = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Horizontal
@@ -92,7 +90,7 @@ hardBtn.addEventListener('click', () => {
 // HANDLE GAME TYPE BUTTON
 document.getElementById('game-type_container').addEventListener('click', () => {  // Oyun türünü değiştir ve yeni oyun başlat
   if (isTurnProcessing === false) {
-    isSinglePlayerGame = !isSinglePlayerGame 
+    isSinglePlayerGame = !isSinglePlayerGame
 
     if (isSinglePlayerGame) {
       players.X.player = 'Player'
@@ -103,26 +101,26 @@ document.getElementById('game-type_container').addEventListener('click', () => {
       players.O.player = 'Player 2';
       game.type = 'P2';
     };
-  
-    newGame(); 
+
+    newGame();
   } else {
     return
   }
 })
 
 function createCell() {
-  for (let i = 0; i < gameBoard.length; i++) { 
+  for (let i = 0; i < gameBoard.length; i++) {
 
-    const block = document.createElement('div'); 
+    const block = document.createElement('div');
     const cell = document.createElement('div');
     block.classList.add('block');
     cell.classList.add('cell');
 
-    block.addEventListener('click', () => { 
+    block.addEventListener('click', () => {
       if (isTurnProcessing === false && gameBoard[i] === null) {
         turnProcessing(i, cell);
 
-      } else { 
+      } else {
         return
       }
     });
@@ -136,7 +134,7 @@ function createCell() {
 function turnProcessing(i, cell) {
   isTurnProcessing = true;
   playToCell(i, cell);
-  
+
   if (isWinOrDraw() === true) {
     setTimeout(() => {
       resetGame();
@@ -162,7 +160,7 @@ function turnProcessing(i, cell) {
 }
 
 function playToCell(i, cell) {
-  gameBoard[i] = currentPlayer.key; 
+  gameBoard[i] = currentPlayer.key;
   cell.classList.add(currentPlayer.name);
 }
 
@@ -179,31 +177,31 @@ function changePlayer() {
 }
 
 function isWinOrDraw() {
-  game.turn ++;
+  game.turn++;
 
-  for (let conditions of winConditions) { 
+  for (let conditions of winConditions) {
     const [a, b, c] = conditions;
-    
+
     // WIN CHECK
-    if (game.turn >= 4 && 
+    if (game.turn >= 4 &&
       ([gameBoard[a], gameBoard[b], gameBoard[c]].every(v => v === players.X.key) ||
-      [gameBoard[a], gameBoard[b], gameBoard[c]].every(v => v === players.O.key))) {
-      
-      const win = [a, b, c]; 
-  
+        [gameBoard[a], gameBoard[b], gameBoard[c]].every(v => v === players.O.key))) {
+
+      const win = [a, b, c];
+
       winAnimation(win);
       currentPlayer.score++;
       console.log(`----------------------------${currentPlayer.player} kazandı! oyun baştan başlayacak...`);
-      
+
       return true;
     }
   }
-  
+
   // DRAW CHECK
-  if (game.turn >= 9 && !winAnimation.isPlaying) { 
+  if (game.turn >= 9 && !winAnimation.isPlaying) {
     drawAnimation();
     console.log('----------------------------Berabere bitti! Oyun baştan başlayacak...');
-    
+
     return true;
   }
 }
@@ -233,7 +231,7 @@ function drawAnimation() {
   let cell;
 
   for (let i = 0; i < gameBoard.length; i++) {
-    cell = blockContainer.childNodes[i].childNodes[0]; 
+    cell = blockContainer.childNodes[i].childNodes[0];
     cell.classList.add('fade');
   }
 }
@@ -247,24 +245,24 @@ function turnAnimation() {
 function checkWinConditions() {
   const conditionsArr = [];
 
-  for (let i = 0; i < winConditions.length; i++) { 
-    const [a, b, c] = winConditions[i]; 
+  for (let i = 0; i < winConditions.length; i++) {
+    const [a, b, c] = winConditions[i];
     const conditions = [gameBoard[a], gameBoard[b], gameBoard[c]];
     conditionsArr.push({ conditions, index: i })
   }
 
   // Possible Block Moves
-  moves.blockMove = conditionsArr.filter(v => 
-    v.conditions.filter(val => val === players.X.key).length === 2 && 
-    v.conditions.includes(null) 
+  moves.blockMove = conditionsArr.filter(v =>
+    v.conditions.filter(val => val === players.X.key).length === 2 &&
+    v.conditions.includes(null)
   ).map(v => ({
     index: v.index,
     conditions: v.conditions
   }));
 
   // Possible Random Finisher Moves
-  moves.finisherMove = conditionsArr.filter(v => 
-    v.conditions.filter(val => val === players.O.key).length === 2 && 
+  moves.finisherMove = conditionsArr.filter(v =>
+    v.conditions.filter(val => val === players.O.key).length === 2 &&
     v.conditions.includes(null)
   ).map(v => ({
     index: v.index,
@@ -316,46 +314,46 @@ function rollTheDice() {
   return game.dice;
 }
 
-function selectMove () {
+function selectMove() {
   let playableMoves = null;
 
   // Play Finisher Move 
-  if (moves.finisherMove.length > 0 && game.dice > game.difficult.finisherMove){
+  if (moves.finisherMove.length > 0 && game.dice > game.difficult.finisherMove) {
     playableMoves = moves.finisherMove;
     console.log('finisher move');
 
   } // Play Block Move 
-    else if (moves.blockMove.length > 0 && game.dice > game.difficult.blockMove) {
-      playableMoves = moves.blockMove;
-      console.log('block move');
+  else if (moves.blockMove.length > 0 && game.dice > game.difficult.blockMove) {
+    playableMoves = moves.blockMove;
+    console.log('block move');
 
-    } // Play 3/2 Move 
-      else if (moves.threeToTwo.length > 0 && game.dice > game.difficult.threeToTwo) {
-        playableMoves = moves.threeToTwo;
-        console.log('3/2 move');
+  } // Play 3/2 Move 
+  else if (moves.threeToTwo.length > 0 && game.dice > game.difficult.threeToTwo) {
+    playableMoves = moves.threeToTwo;
+    console.log('3/2 move');
 
-      }  // Play 3/1 Move && Play Middle Move in 3/1 Move
-        else if (moves.threeToOne.length > 0) {
-          if (game.dice > game.difficult.coverTheMiddle &&
-            moves.coverTheMiddle.length > 0
-          ) { 
-              playableMoves = 4
-              console.log('3/1 middle move');
+  }  // Play 3/1 Move && Play Middle Move in 3/1 Move
+  else if (moves.threeToOne.length > 0) {
+    if (game.dice > game.difficult.coverTheMiddle &&
+      moves.coverTheMiddle.length > 0
+    ) {
+      playableMoves = 4
+      console.log('3/1 middle move');
 
-          } else {
-              playableMoves = moves.threeToOne;
-              console.log(' 3/1 move');
-          }
-        } //  Play Blind Move 
-          else if (moves.blindMove.length > 0) {
-            playableMoves = moves.blindMove;
-            console.log('blind move');
-          }
+    } else {
+      playableMoves = moves.threeToOne;
+      console.log(' 3/1 move');
+    }
+  } //  Play Blind Move 
+  else if (moves.blindMove.length > 0) {
+    playableMoves = moves.blindMove;
+    console.log('blind move');
+  }
 
   return playableMoves;
 };
 
-function playMove (playableMoves) {
+function playMove(playableMoves) {
   console.log(playableMoves);
 
   let i;
@@ -363,23 +361,23 @@ function playMove (playableMoves) {
   if (playableMoves !== 4) {
     const randomIndex = Math.floor(Math.random() * playableMoves.length);
     const selectedMove = playableMoves[randomIndex];
-    const emptyCellsIndex = [];  
+    const emptyCellsIndex = [];
 
     for (let i = 0; i < selectedMove.conditions.length; i++) {
       if (selectedMove.conditions[i] === null) {
         emptyCellsIndex.push(i);
       }
     }
-    const selectedMoveIndex = []; 
+    const selectedMoveIndex = [];
 
     if (emptyCellsIndex.length > 0) {
       const selectedIndex = emptyCellsIndex[Math.floor(Math.random() * emptyCellsIndex.length)];
       selectedMoveIndex.push(selectedIndex);
     }
 
-    const callBackMove = winConditions[selectedMove.index] 
+    const callBackMove = winConditions[selectedMove.index]
     i = callBackMove[selectedMoveIndex];
-  
+
   } else {
     i = 4;
   }
@@ -389,8 +387,8 @@ function playMove (playableMoves) {
 }
 
 // NEW GAME && RESET GAME
-function resetGame () {
-  gameBoard.fill(null);  
+function resetGame() {
+  gameBoard.fill(null);
   blockContainer.innerHTML = '';
 
   document.getElementById('player-1_name').innerText = players.X.player + ' (X)';
@@ -401,17 +399,17 @@ function resetGame () {
   document.getElementById('game-type-num').classList.add(game.type);
 
   game.turn = 0;
-  createCell(); 
+  createCell();
 }
 
-function newGame () { 
+function newGame() {
   if (isTurnProcessing === false) {
-    players.X.score = 0; 
+    players.X.score = 0;
     players.O.score = 0;
     currentPlayer = players.X;
     nextPlayer = players.O;
-    turnAnimation(); 
-    resetGame(); 
+    turnAnimation();
+    resetGame();
   }
 }
 

@@ -185,13 +185,13 @@ h1 {
 }
 
 .block {
-  position: relative; /* Pseudo-element için gerekli */
+  position: relative; 
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black; /* Arka plan rengi */
+  background-color: black; 
   cursor: pointer;
   z-index: 80;
   height: 160px;
@@ -224,9 +224,9 @@ h1 {
 .O::before {
   content: "";
   position: absolute;
-  border: 15px solid white; /* Kalınlığı 10px */
-  border-radius: 100%; /* Tam yuvarlak */
-  width: 80px; /* Genişlik ve yükseklik artırıldı */
+  border: 15px solid white; 
+  border-radius: 100%; 
+  width: 80px; 
   height: 80px;
   top: 50%;
   left: 50%;
@@ -238,8 +238,8 @@ h1 {
   content: "";
   position: absolute;
   background-color: white;
-  width: 15px; /* Kalınlık O ile eşitlendi */
-  height: 135px; /* Boy aynı */
+  width: 15px;
+  height: 135px; 
   top: 50%;
   left: 50%;
   border-radius: 6px;
@@ -247,11 +247,11 @@ h1 {
 }
 
 .X::before {
-  transform: translate(-50%, -50%) rotate(45deg); /* X oluşturma */
+  transform: translate(-50%, -50%) rotate(45deg); 
 }
 
 .X::after {
-  transform: translate(-50%, -50%) rotate(-45deg); /* X oluşturma */
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .opacity {
